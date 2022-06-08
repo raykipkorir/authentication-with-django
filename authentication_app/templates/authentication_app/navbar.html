@@ -1,0 +1,49 @@
+<nav class="navbar sticky-top navbar-expand-lg" style = "background-color:silver;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Website</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'authenticate_app:home' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'user_profile:feed' %}">Feed</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+          <ul class = "navbar-nav">
+            {% if user.is_authenticated %}
+           
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="{% url 'user_profile:profile' %}" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                   Profile
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                  <li><a class="dropdown-item" href="{% url 'authenticate_app:update_profile' user.id %}">Edit Profile</a></li>
+                  <li><a class="dropdown-item" href="{% url 'authenticate_app:change_password' %}">Change Password</a></li>
+                  <li><a class="dropdown-item" href="{% url 'django.contrib.auth:logout' %}">Logout</a></li>
+                </ul>
+              </li>
+              <div style = "text-align:center;">
+                <span >Welcome {{ user.username }}</span>
+              </div>
+              
+            {% else %}
+            <li class = "nav-item">
+                <a href="{% url 'django.contrib.auth:login' %}" class = "nav-link">Sign in</a>
+            </li>
+            <li class = "nav-item">
+                <a href="{% url 'authenticate_app:signup' %}" class = "nav-link">Get started</a>
+            </li>
+            
+
+            {% endif %}
+          </ul>
+      </div>
+    </div>
+  </nav>

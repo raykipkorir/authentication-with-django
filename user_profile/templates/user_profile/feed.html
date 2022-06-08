@@ -1,0 +1,14 @@
+{% extends 'authentication_app/base.html' %}
+
+{% block title%}
+Feed
+{% endblock title%}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<span {% if message.tags %} alert-{{message.tag}}{% endif %}>{{ message}}</span>
+{% endfor %}
+{% endif %}
+<h2>Your feed </h2>
+{% endblock content %}

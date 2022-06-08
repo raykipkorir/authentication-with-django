@@ -1,0 +1,25 @@
+{% extends 'authentication_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Update your info
+{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy}}
+        <input type="submit" value="Update" class = "btn btn-primary">
+    </form>
+    {% if messages %}
+    {% for message in messages %}
+    <span {% if message.tags %}{{ message.tag}}{% endif %}>{{ message}}</span>
+    {% endfor %}
+    {% endif %}
+    <br>
+    <br>
+    <a href="{% url 'authenticate_app:delete_user' user.id %} " class = "btn btn-danger"> Delete Account</a>
+</div>
+{% endblock content %}
+
