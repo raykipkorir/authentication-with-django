@@ -11,6 +11,10 @@ Frontend - HTML CSS JS
 ```
 git clone https://github.com/raykipkorir/authentication-with-django
 ```
+* Navigate into the repository 
+```
+cd authentication-with-django
+```
 * Create a virtual environment then activate to install all dependencies\
 For windows
 ```
